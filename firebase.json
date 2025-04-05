@@ -19,18 +19,11 @@
         "destination": "/index.html"
       }
     ],
-    "redirects": [
-      {
-        "source": "/old-path",
-        "destination": "/new-path",
-        "type": 301
-      }
-    ],
     "cleanUrls": true,
     "trailingSlash": false
   },
   "functions": {
-    "source": "functions/lib",
+    "source": "functions",
     "ignore": [
       "node_modules",
       ".git",

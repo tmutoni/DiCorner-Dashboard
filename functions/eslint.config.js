@@ -26,10 +26,11 @@ module.exports = {
     "import",
   ],
   rules: {
+    "@typescript-eslint/no-explicit-any": "error",
     "quotes": ["error", "double"],
     "import/no-unresolved": 0,
     "indent": ["error", 2],
     // Adjust unused variables rule: ignore variables starting with '_'
-    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }]
   },
 };

@@ -1,22 +1,23 @@
-"use client"; // If you’re using Next.js 13 with the app router and want this file to run on the client
-
-import { initializeApp, getApps, getApp } from "firebase/app";
+// firebaseConfig.ts
+import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:            "YOUR_API_KEY",
-  authDomain:        "YOUR_AUTH_DOMAIN",
-  projectId:         "YOUR_PROJECT_ID",
-  storageBucket:     "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId:             "YOUR_APP_ID",
-  measurementId:     "YOUR_MEASUREMENT_ID",
+  apiKey: "AIzaSyBVH6iRMNd-92t8oOIRuYcigNIaPFSdGFM",
+  authDomain: "dicorner-dash.firebaseapp.com",
+  databaseURL: "https://dicorner-dash-default-rtdb.firebaseio.com",
+  projectId: "dicorner-dash",
+  storageBucket: "dicorner-dash.firebasestorage.app",
+  messagingSenderId: "611866900293",
+  appId: "1:611866900293:web:62a5a3cc8acc52a0b0702c",
+  measurementId: "G-B4JHF0J3GD"
 };
 
-// Initialize Firebase app (singleton pattern)
-const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
-// Export the services you need
-export const db   = getFirestore(app);
-export const auth = getAuth(app);
+export { app, db, auth };

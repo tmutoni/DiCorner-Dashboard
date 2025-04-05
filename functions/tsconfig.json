@@ -12,7 +12,8 @@
   },
   "compileOnSave": true,
   "include": [
-    "src"
+    "src",
+    "../authFunctions.ts"
   ],
   "exclude": [
     "node_modules"
