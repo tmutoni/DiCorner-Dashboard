@@ -6,7 +6,7 @@ import Sidebar from "../../components/ui/sidebar";
 import AIInsights from "../../components/ui/ai-insights";
 import ABTesting from "../../components/ui/ab-testing";
 import Messaging from "../../components/ui/messaging";
-import ChatAssistant from "../../components/ui/chat-widget";
+//import ChatAssistant from "../../components/ui/chat-widget";
 import Statistics from "../../components/ui/statistics";
 import SignUpPage from "../../components/ui/sign-up";
 import Dashboard from "../../components/ui/analytics-dashboard";

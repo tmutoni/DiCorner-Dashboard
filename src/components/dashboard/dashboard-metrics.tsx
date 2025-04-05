@@ -1,5 +1,9 @@
+"use client";
 import React, { useState, useEffect } from "react";
+import PredictiveModeling from "./predictive-modeling"; // Check this path
 import DataVisualization from "./data-visualization";
+import { doc, onSnapshot } from "firebase/firestore";  // from the v9+ Firestore package
+import { db } from "../../firebaseConfig";
 
 const DashboardMetrics = () => {
   // State for metrics data
@@ -8,15 +12,34 @@ const DashboardMetrics = () => {
     decisionFatigue: 3.4,
     churnRate: 22,
   });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulating fetching data
-    setTimeout(() => {
-      setMetrics({ dropOff: 22, decisionFatigue: 3.4, churnRate: 22 });
-      setError(null);
-    }, 1000);
+    // Replace "metrics" and "currentMetrics" with your actual Firestore collection and document ID
+    const docRef = doc(db, "metrics", "currentMetrics");
+
+    // Listen for real-time updates to the document
+    const unsubscribe = onSnapshot(
+      docRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          // Update metrics state with new data
+          setMetrics(snapshot.data() as typeof metrics);
+          setError(null);
+        } else {
+          setError("No such document!");
+        }
+      },
+      (err) => {
+        console.error("Error fetching document: ", err);
+        setError(err.message);
+      }
+    );
+
+    // Clean up the listener on component unmount
+    return () => unsubscribe();
   }, []);
+
 
   return (
     <div className="flex">
@@ -49,7 +72,11 @@ const DashboardMetrics = () => {
           <h3 className="text-lg font-semibold text-black">Behavioral Trends Over Time</h3>
           <DataVisualization metrics={metrics} />
         </div>
-
+        [<div className="mt-6">
+          <h3 className="text-lg font-semibold text-black">Predictive Modeling</h3>
+          <PredictiveModeling />
+        </div>]
+        
         {/* Strategic Recommendations Section */}
         <div className="mt-6 bg-gray-100 p-6 rounded-lg shadow-md">
           <h3 className="text-lg font-semibold text-black">Strategic Recommendations</h3>
@@ -92,7 +119,6 @@ const DashboardMetrics = () => {
 
         {error && <p className="text-red-600 mt-4">Error: {error}</p>}
       </div>
-
     </div>
   );
 };

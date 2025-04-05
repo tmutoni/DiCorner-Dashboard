@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "dicorner-dash",
+    "dicorner-dashboard": "dicorner-dash",
+    "DiCorner-Dashboard": "dicorner-dash"
+  },
+  "targets": {},
+  "etags": {}
+}

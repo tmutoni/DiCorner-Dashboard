@@ -3,7 +3,6 @@
 import React from "react";
 import Sidebar from "../components/ui/sidebar";
 import DashboardMetrics from "../components/dashboard/dashboard-metrics";
-import DataVisualization from "../components/dashboard/data-visualization";
 import SortMetrics from "../components/dashboard/sort-metrics";
 import Filter from "../components/dashboard/filter"; // Ensures sorting & filtering are handled properly
 
